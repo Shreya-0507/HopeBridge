@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HopeBridge - Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <button onclick="logout()">Logout</button>
+    </header>
+
+
+    <main class="dashboard">
+
+        <!-- HERO / WELCOME -->
+       <section class="welcome">
+
+    <div class="welcome-content">
+
+        <div class="welcome-icon">
+            🌿
+        </div>
+
+        <div class="welcome-text">
+
+            <h2>Say No to Drugs,</h2>
+            <h2>YES to Life!</h2>
+
+            <p>
+                Your digital platform for addiction awareness,
+                recovery support and healthy living.
+            </p>
+
+            <p class="welcome-message">
+                ❤️ <strong>Every step toward a healthier life matters.</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="welcome-decoration">
+        <img src="a boy.png" alt="Recovery and hope">
+    </div>
+
+</section>
+
+
+        <!-- EXISTING FEATURES -->
+        <section class="cards">
+
+            <!-- Awareness -->
+            <div class="card">
+                <div class="icon">🧠</div>
+
+                <h3>Awareness</h3>
+
+                <p>
+                    Learn about drug and alcohol addiction,
+                    their effects and warning signs.
+                </p>
+
+                <button onclick="openAwareness()">
+                    Learn More →
+                </button>
+            </div>
+
+
+            <!-- Recovery Tips -->
+            <div class="card">
+                <div class="icon">💪</div>
+
+                <h3>Recovery Tips</h3>
+
+                <p>
+                    Get daily tips and healthy habits
+                    that can support recovery.
+                </p>
+
+                <button onclick="openRecovery()">
+                    View Tips →
+                </button>
+            </div>
+
+
+            <!-- Progress Tracker -->
+            <div class="card">
+                <div class="icon">📊</div>
+
+                <h3>Progress Tracker</h3>
+
+                <p>
+                    Track your recovery journey
+                    and daily progress.
+                </p>
+
+                <button onclick="openProgress()">
+                    Track Progress →
+                </button>
+            </div>
+
+
+            <!-- Support -->
+            <div class="card">
+                <div class="icon">🤝</div>
+
+                <h3>Support</h3>
+
+                <p>
+                    Find useful support information
+                    and community resources.
+                </p>
+
+                <button onclick="openSupport()">
+                    Get Support →
+                </button>
+            </div>
+
+
+            <!-- Self Assessment -->
+            <div class="card">
+                <div class="icon">📝</div>
+
+                <h3>Self-Assessment</h3>
+
+                <p>
+                    Take a short awareness questionnaire
+                    about substance use and recovery.
+                </p>
+
+                <button onclick="openSelfAssessment()">
+                    Take Assessment →
+                </button>
+            </div>
+
+
+            <!-- Find Help -->
+            <div class="card">
+                <div class="icon">🏥</div>
+
+                <h3>Find Help</h3>
+
+                <p>
+                    Find nearby rehabilitation and
+                    de-addiction centres based on your location.
+                </p>
+
+                <button onclick="openHelp()">
+                    Find Help →
+                </button>
+            </div>
+
+
+            <!-- PLEDGE - EXISTING FEATURE -->
+            <div class="card pledge-card">
+
+                <div class="icon">🇮🇳</div>
+
+                <h3>Nasha Mukti Pledge</h3>
+
+                <p>
+                    Take a pledge to support a healthy,
+                    responsible and drug-free life.
+                </p>
+
+                <button onclick="openPledge()">
+                    Take the Pledge →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUCCESS STORIES -->
+        <section class="extra-sections">
+
+            <div class="success-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Success Stories</h2>
+
+                        <p>
+                            Real recovery journeys. Real hope.
+                        </p>
+                    </div>
+
+                    <span class="section-icon">👥</span>
+
+                </div>
+
+
+                <div class="story-card">
+
+                    <div class="story-quote">
+                        “It’s never too late to seek help
+                        and begin a healthier life.”
+                    </div>
+
+                    <h3>Abhinav Kumar</h3>
+
+                    <p>
+                        A documented recovery story featured by
+                        the Nasha Mukt Bharat Abhiyaan. After years
+                        of substance use, he sought professional
+                        help and joined support group therapy.
+                    </p>
+
+                    <small>
+                        Ministry of Social Justice & Empowerment
+                        · Official Government Source
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- GOVERNMENT SCHEMES / SUPPORT -->
+            <div class="schemes-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Government Schemes & Support</h2>
+
+                        <p>
+                            Official support for addiction recovery.
+                        </p>
+                    </div>
+
+                    <span class="section-icon">🏛️</span>
+
+                </div>
+
+
+                <div class="scheme-list">
+
+                    <div class="scheme-item">
+                        <span>🌿</span>
+
+                        <div>
+                            <h3>Nasha Mukt Bharat Abhiyaan</h3>
+
+                            <p>
+                                Government initiative for awareness,
+                                prevention and support against substance abuse.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scheme-item">
+                        <span>📞</span>
+
+                        <div>
+                            <h3>National De-addiction Helpline – 14446</h3>
+
+                            <p>
+                                Helpline for information, guidance
+                                and addiction-related support.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scheme-item">
+                        <span>🏥</span>
+
+                        <div>
+                            <h3>Integrated Rehabilitation Centres</h3>
+
+                            <p>
+                                Rehabilitation and treatment services
+                                for people affected by substance use.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scheme-item">
+                        <span>🤝</span>
+
+                        <div>
+                            <h3>District De-Addiction Centres</h3>
+
+                            <p>
+                                Local support and counselling services
+                                for people seeking recovery.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scheme-item">
+                        <span>💚</span>
+
+                        <div>
+                            <h3>Outreach & Drop-in Centres</h3>
+
+                            <p>
+                                Community-level support and guidance
+                                for people affected by substance use.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+       
+
+    </main>
+
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

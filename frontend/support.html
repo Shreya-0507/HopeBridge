@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Support - Nasha Mukti</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<header class="feature-header">
+
+    <button onclick="window.location.href='dashboard.html'">
+        ← Back to Dashboard
+    </button>
+
+</header>
+
+
+<main class="feature-page">
+
+    <!-- SUPPORT HERO -->
+
+    <section class="support-hero">
+
+        <div class="support-hero-icon">
+            🤝
+        </div>
+
+        <div>
+            <span class="eyebrow">
+                YOU ARE NOT ALONE
+            </span>
+
+            <h1>
+                Government & Support Services
+            </h1>
+
+            <p>
+                If you or someone you know is struggling with
+                substance use, help and guidance are available.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- SUPPORT INFORMATION -->
+
+    <section class="support-information">
+
+        <div class="feature-section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    HELP IS AVAILABLE
+                </span>
+
+                <h2>
+                    Support and guidance
+                </h2>
+
+                <p>
+                    Explore available services and resources
+                    that can help individuals and families.
+                </p>
+            </div>
+
+            <div class="heading-leaf">
+                💚
+            </div>
+
+        </div>
+
+
+        <div id="supportContent" class="support-grid">
+
+            <div class="loading-card">
+                Loading support information...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HELPLINE HIGHLIGHT -->
+
+    <section class="support-helpline">
+
+        <div class="support-helpline-icon">
+            📞
+        </div>
+
+        <div class="support-helpline-content">
+
+            <span class="eyebrow">
+                NEED GUIDANCE?
+            </span>
+
+            <h2>
+                National De-addiction Helpline
+            </h2>
+
+            <p>
+                Family members can also seek guidance and
+                support through the national de-addiction helpline.
+            </p>
+
+            <strong>
+                14446
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUPPORTIVE MESSAGE -->
+
+    <section class="support-next-step">
+
+        <div>
+
+            <span class="eyebrow">
+                TAKE THE FIRST STEP
+            </span>
+
+            <h2>
+                Asking for help is a sign of strength.
+            </h2>
+
+            <p>
+                Reaching out for support can make recovery
+                easier. Talk to a trusted person or seek
+                professional guidance when needed.
+            </p>
+
+        </div>
+
+        <div class="next-step-icon">
+            🌱
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+async function loadSupport() {
+
+    const content =
+        document.getElementById("supportContent");
+
+    try {
+
+        const response =
+            await fetch("http://127.0.0.1:8000/support");
+
+        const data =
+            await response.json();
+
+        let html = "";
+
+        data.information.forEach(function(item, index) {
+
+            const icons = [
+                "🏛️",
+                "🏥",
+                "🤝",
+                "🌿",
+                "💚",
+                "📋"
+            ];
+
+            html += `
+                <article class="modern-support-card">
+
+                    <div class="modern-support-icon">
+                        ${icons[index % icons.length]}
+                    </div>
+
+                    <div class="modern-support-content">
+
+                        <h3>
+                            ${item.title}
+                        </h3>
+
+                        <p>
+                            ${item.description}
+                        </p>
+
+                    </div>
+
+                </article>
+            `;
+
+        });
+
+        content.innerHTML = html;
+
+    } catch (error) {
+
+        content.innerHTML = `
+            <div class="loading-card">
+                <p>Unable to connect to backend.</p>
+            </div>
+        `;
+
+        console.error(error);
+    }
+}
+
+loadSupport();
+
+</script>
+
+</body>
+
+</html>

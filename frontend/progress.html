@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Progress Tracker - Nasha Mukti</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<header class="feature-header">
+
+    <button onclick="window.location.href='dashboard.html'">
+        ← Back to Dashboard
+    </button>
+
+</header>
+
+
+<main class="feature-page">
+
+    <!-- PROGRESS HERO -->
+
+    <section class="progress-hero">
+
+        <div class="progress-hero-icon">
+            📊
+        </div>
+
+        <div>
+            <span class="eyebrow">
+                YOUR JOURNEY
+            </span>
+
+            <h1>
+                Recovery Progress
+            </h1>
+
+            <p>
+                Track your progress, celebrate your consistency,
+                and keep moving forward one day at a time.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS CONTENT -->
+
+    <section class="progress-information">
+
+        <div class="feature-section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    KEEP GOING
+                </span>
+
+                <h2>
+                    Your recovery journey
+                </h2>
+
+                <p>
+                    Every completed day is a step toward a healthier life.
+                </p>
+            </div>
+
+            <div class="heading-leaf">
+                🌱
+            </div>
+
+        </div>
+
+
+        <div id="progressContent" class="progress-content">
+
+            <div class="loading-card">
+                Loading your progress...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUPPORTIVE MESSAGE -->
+
+    <section class="progress-next-step">
+
+        <div>
+
+            <span class="eyebrow">
+                ONE DAY AT A TIME
+            </span>
+
+            <h2>
+                Progress is built through consistency.
+            </h2>
+
+            <p>
+                Celebrate each healthy choice and remember that
+                recovery is a journey. Keep taking the next step.
+            </p>
+
+        </div>
+
+        <div class="next-step-icon">
+            💚
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+async function loadProgress() {
+
+    const token = localStorage.getItem("access_token");
+
+    if (!token) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/progress",
+            {
+                method: "GET",
+
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (data.progress) {
+
+            let historyHTML = "";
+
+            data.progress.forEach(function(record) {
+
+                historyHTML += `
+                    <div class="progress-history-item">
+
+                        <span class="history-date">
+                            ${record.date}
+                        </span>
+
+                        <span class="history-status">
+                            ✓ ${record.status}
+                        </span>
+
+                    </div>
+                `;
+
+            });
+
+            document.getElementById("progressContent").innerHTML = `
+
+                <div class="progress-summary">
+
+                    <div class="progress-summary-card">
+
+                        <span class="summary-icon">
+                            👋
+                        </span>
+
+                        <div>
+                            <span class="summary-label">
+                                Welcome
+                            </span>
+
+                            <h3>
+                                ${data.user_name}!
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-summary-card">
+
+                        <span class="summary-icon">
+                            🌿
+                        </span>
+
+                        <div>
+                            <span class="summary-label">
+                                Days Completed
+                            </span>
+
+                            <h3>
+                                ${data.total_days}
+                            </h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-history">
+
+                    <div class="progress-history-heading">
+
+                        <div>
+                            <span class="eyebrow">
+                                YOUR RECORD
+                            </span>
+
+                            <h3>
+                                Progress History
+                            </h3>
+                        </div>
+
+                        <span class="history-icon">
+                            📅
+                        </span>
+
+                    </div>
+
+                    <div class="history-list">
+
+                        ${historyHTML}
+
+                    </div>
+
+                </div>
+
+
+                <div class="mark-progress-box">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            TODAY
+                        </span>
+
+                        <h3>
+                            Ready to mark today's progress?
+                        </h3>
+
+                        <p>
+                            Keep your recovery journey going.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="mark-progress-button"
+                        onclick="markProgress()">
+
+                        ✓ Mark Today's Progress
+
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="progressMessage"
+                    class="progress-message">
+                </p>
+
+            `;
+
+        } else {
+
+            document.getElementById("progressContent").innerHTML = `
+
+                <div class="loading-card">
+                    <p>${data.message}</p>
+                </div>
+
+            `;
+
+        }
+
+    } catch (error) {
+
+        document.getElementById("progressContent").innerHTML = `
+
+            <div class="loading-card">
+                <p>Unable to connect to backend.</p>
+            </div>
+
+        `;
+
+        console.error(error);
+    }
+}
+
+
+async function markProgress() {
+
+    const token = localStorage.getItem("access_token");
+
+    if (!token) {
+
+        document.getElementById("progressMessage").textContent =
+            "Please login again.";
+
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/progress",
+            {
+                method: "POST",
+
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        document.getElementById("progressMessage").textContent =
+            data.message;
+
+    } catch (error) {
+
+        document.getElementById("progressMessage").textContent =
+            "Unable to connect to backend.";
+
+        console.error(error);
+    }
+}
+
+
+loadProgress();
+
+</script>
+
+</body>
+
+</html>

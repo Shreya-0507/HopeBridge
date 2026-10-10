@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recovery Tips - Nasha Mukti</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<header class="feature-header">
+
+    <button onclick="window.location.href='dashboard.html'">
+        ← Back to Dashboard
+    </button>
+
+</header>
+
+
+<main class="feature-page">
+
+    <!-- RECOVERY HERO -->
+
+    <section class="recovery-hero">
+
+        <div class="recovery-hero-icon">
+            💪
+        </div>
+
+        <div>
+            <span class="eyebrow">
+                YOUR RECOVERY JOURNEY
+            </span>
+
+            <h1>
+                Recovery Tips
+            </h1>
+
+            <p>
+                Helpful habits and guidance that can support
+                a healthy recovery journey, one step at a time.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- RECOVERY INFORMATION -->
+
+    <section class="recovery-information">
+
+        <div class="feature-section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    SMALL STEPS MATTER
+                </span>
+
+                <h2>
+                    Helpful habits for recovery
+                </h2>
+
+                <p>
+                    Explore practical guidance that can support
+                    healthier routines and positive progress.
+                </p>
+            </div>
+
+            <div class="heading-leaf">
+                🌿
+            </div>
+
+        </div>
+
+
+        <div id="recoveryContent" class="recovery-grid">
+
+            <div class="loading-card">
+                Loading recovery tips...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUPPORTIVE MESSAGE -->
+
+    <section class="recovery-next-step">
+
+        <div>
+
+            <span class="eyebrow">
+                KEEP MOVING FORWARD
+            </span>
+
+            <h2>
+                Every healthy choice is a step forward.
+            </h2>
+
+            <p>
+                Recovery takes time. Be patient with yourself,
+                stay connected to supportive people, and seek
+                professional help when needed.
+            </p>
+
+        </div>
+
+        <div class="next-step-icon">
+            🌱
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+async function loadRecovery() {
+
+    const content =
+        document.getElementById("recoveryContent");
+
+    try {
+
+        const response =
+            await fetch("http://127.0.0.1:8000/recovery-tips");
+
+        const data =
+            await response.json();
+
+        let html = "";
+
+        data.tips.forEach(function(tip, index) {
+
+            const icons = [
+                "💧",
+                "🧘",
+                "🏃",
+                "🥗",
+                "😴",
+                "🤝",
+                "🧠",
+                "🌿"
+            ];
+
+            html += `
+                <article class="modern-recovery-card">
+
+                    <div class="modern-recovery-icon">
+                        ${icons[index % icons.length]}
+                    </div>
+
+                    <div class="modern-recovery-content">
+
+                        <h3>
+                            ${tip.title}
+                        </h3>
+
+                        <p>
+                            ${tip.description}
+                        </p>
+
+                    </div>
+
+                </article>
+            `;
+
+        });
+
+        content.innerHTML = html;
+
+    } catch (error) {
+
+        content.innerHTML = `
+            <div class="loading-card">
+                <p>Unable to connect to backend.</p>
+            </div>
+        `;
+
+        console.error(error);
+    }
+}
+
+loadRecovery();
+
+</script>
+
+</body>
+
+</html>

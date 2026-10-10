@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Self-Assessment - Nasha Mukti</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<header class="feature-header">
+
+    <button onclick="window.location.href='dashboard.html'">
+        ← Back to Dashboard
+    </button>
+
+</header>
+
+
+<main class="feature-page">
+
+    <!-- ASSESSMENT HERO -->
+
+    <section class="assessment-hero">
+
+        <div class="assessment-hero-icon">
+            🧠
+        </div>
+
+        <div>
+
+            <span class="eyebrow">
+                REFLECT & UNDERSTAND
+            </span>
+
+            <h1>
+                Self-Assessment
+            </h1>
+
+            <p>
+                Take a moment to reflect on your habits and experiences.
+                Your answers can help you understand possible warning signs
+                and when support may be useful.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- IMPORTANT NOTICE -->
+
+    <section class="assessment-notice">
+
+        <div class="notice-icon">
+            ℹ️
+        </div>
+
+        <div>
+
+            <h3>
+                Important
+            </h3>
+
+            <p>
+                This questionnaire is for awareness only.
+                It does not diagnose addiction or any medical condition.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUESTIONS -->
+
+    <section class="assessment-information">
+
+        <div class="feature-section-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    ANSWER HONESTLY
+                </span>
+
+                <h2>
+                    How have you been feeling?
+                </h2>
+
+                <p>
+                    Select the answer that best describes your experience.
+                </p>
+
+            </div>
+
+            <div class="heading-leaf">
+                🌿
+            </div>
+
+        </div>
+
+
+        <form id="assessmentForm">
+
+            <div class="assessment-question">
+
+                <span class="question-number">01</span>
+
+                <h3>
+                    Have you felt that using alcohol or drugs is affecting
+                    your daily life?
+                </h3>
+
+                <div class="assessment-options">
+
+                    <label>
+                        <input type="radio" name="question0" value="0" required>
+                        <span>Never</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question0" value="1">
+                        <span>Sometimes</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question0" value="2">
+                        <span>Often</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="assessment-question">
+
+                <span class="question-number">02</span>
+
+                <h3>
+                    Have you found it difficult to reduce or stop using
+                    alcohol or drugs?
+                </h3>
+
+                <div class="assessment-options">
+
+                    <label>
+                        <input type="radio" name="question1" value="0" required>
+                        <span>Never</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question1" value="1">
+                        <span>Sometimes</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question1" value="2">
+                        <span>Often</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="assessment-question">
+
+                <span class="question-number">03</span>
+
+                <h3>
+                    Have you experienced problems with family, friends,
+                    school or work because of substance use?
+                </h3>
+
+                <div class="assessment-options">
+
+                    <label>
+                        <input type="radio" name="question2" value="0" required>
+                        <span>Never</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question2" value="1">
+                        <span>Sometimes</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question2" value="2">
+                        <span>Often</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="assessment-question">
+
+                <span class="question-number">04</span>
+
+                <h3>
+                    Have you continued using alcohol or drugs even when
+                    it caused problems?
+                </h3>
+
+                <div class="assessment-options">
+
+                    <label>
+                        <input type="radio" name="question3" value="0" required>
+                        <span>Never</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question3" value="1">
+                        <span>Sometimes</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question3" value="2">
+                        <span>Often</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="assessment-question">
+
+                <span class="question-number">05</span>
+
+                <h3>
+                    Have you felt worried or concerned about your alcohol
+                    or drug use?
+                </h3>
+
+                <div class="assessment-options">
+
+                    <label>
+                        <input type="radio" name="question4" value="0" required>
+                        <span>Never</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question4" value="1">
+                        <span>Sometimes</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="question4" value="2">
+                        <span>Often</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="assessment-submit">
+
+                <p>
+                    Answer all five questions before submitting.
+                </p>
+
+                <button type="submit" class="assessment-submit-button">
+                    Check My Result →
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <!-- RESULT -->
+
+        <div id="assessmentResult"></div>
+
+    </section>
+
+
+    <!-- SUPPORTIVE MESSAGE -->
+
+    <section class="assessment-next-step">
+
+        <div>
+
+            <span class="eyebrow">
+                REMEMBER
+            </span>
+
+            <h2>
+                Asking for support is always okay.
+            </h2>
+
+            <p>
+                If your answers raise concerns, consider talking with
+                someone you trust or seeking professional guidance.
+            </p>
+
+        </div>
+
+        <div class="next-step-icon">
+            💚
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+document
+    .getElementById("assessmentForm")
+    .addEventListener("submit", submitAssessment);
+
+
+async function submitAssessment(event) {
+
+    event.preventDefault();
+
+    const answers = [];
+
+    for (let i = 0; i < 5; i++) {
+
+        const selected = document.querySelector(
+            `input[name="question${i}"]:checked`
+        );
+
+        if (!selected) {
+
+            alert("Please answer all questions.");
+
+            return;
+        }
+
+        answers.push(Number(selected.value));
+    }
+
+
+    const resultBox =
+        document.getElementById("assessmentResult");
+
+
+    resultBox.innerHTML = `
+        <div class="assessment-calculating">
+            <p>Calculating your result...</p>
+        </div>
+    `;
+
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/self-assessment",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(answers)
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        resultBox.innerHTML = `
+
+            <div class="assessment-result">
+
+                <div class="result-icon">
+                    📊
+                </div>
+
+                <span class="eyebrow">
+                    YOUR ASSESSMENT
+                </span>
+
+                <h2>
+                    Your Result
+                </h2>
+
+                <h3>
+                    ${data.result}
+                </h3>
+
+                <div class="result-score">
+                    Score: ${data.score}
+                </div>
+
+                <p>
+                    ${data.message}
+                </p>
+
+                <div class="result-disclaimer">
+
+                    <strong>
+                        This result is for awareness only and is
+                        not a medical diagnosis.
+                    </strong>
+
+                </div>
+
+                <button
+                    class="result-dashboard-button"
+                    onclick="window.location.href='dashboard.html'">
+
+                    🏠 Back to Dashboard
+
+                </button>
+
+            </div>
+
+        `;
+
+    } catch (error) {
+
+        resultBox.innerHTML = `
+
+            <div class="loading-card">
+                <p>Unable to connect to backend.</p>
+            </div>
+
+        `;
+
+        console.error(error);
+    }
+}
+
+</script>
+
+</body>
+
+</html>

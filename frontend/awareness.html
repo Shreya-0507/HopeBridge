@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Awareness - Nasha Mukti</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<header class="feature-header">
+
+    <button onclick="window.location.href='dashboard.html'">
+        ← Back to Dashboard
+    </button>
+
+</header>
+
+
+<main class="feature-page">
+
+    <!-- INTRODUCTION -->
+
+    <section class="awareness-hero">
+
+        <div class="awareness-hero-icon">
+            🧠
+        </div>
+
+        <div>
+            <span class="eyebrow">
+                STAY INFORMED
+            </span>
+
+            <h1>
+                Drug & Alcohol Awareness
+            </h1>
+
+            <p>
+                Learn about addiction, its effects, warning signs,
+                and the importance of seeking support.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- EXISTING AWARENESS INFORMATION -->
+
+    <section class="awareness-information">
+
+        <div class="feature-section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    KNOW THE FACTS
+                </span>
+
+                <h2>
+                    Understanding substance use
+                </h2>
+
+                <p>
+                    Learn about the different areas covered
+                    by our awareness programme.
+                </p>
+            </div>
+
+            <div class="heading-leaf">
+                🌿
+            </div>
+
+        </div>
+       
+</div>
+
+<div class="awareness-divider"></div>
+
+
+        <div id="awarenessContent" class="awareness-grid">
+
+            <div class="loading-card">
+                Loading awareness information...
+            </div>
+
+        </div>
+        <div class="substance-section">
+
+    <div class="feature-section-heading">
+
+        <div>
+            <span class="eyebrow">STAY INFORMED</span>
+
+            <h2>Common Types of Substances</h2>
+
+            <p>
+                Learn about substances that can affect physical
+                and mental well-being.
+            </p>
+        </div>
+
+        <div class="heading-leaf">🌿</div>
+
+    </div>
+
+    <div class="substance-grid">
+
+        <div class="substance-card">
+            <span>🍺</span>
+            <h3>Alcohol</h3>
+            <p>Can affect judgement, behaviour and overall health.</p>
+        </div>
+
+        <div class="substance-card">
+            <span>🚬</span>
+            <h3>Tobacco & Nicotine</h3>
+            <p>Nicotine can lead to dependence and health problems.</p>
+        </div>
+
+        <div class="substance-card">
+            <span>💊</span>
+            <h3>Prescription Drugs</h3>
+            <p>Some medicines can be misused and may cause dependence.</p>
+        </div>
+
+        <div class="substance-card">
+            <span>🌿</span>
+            <h3>Cannabis</h3>
+            <p>Can affect memory, concentration and daily functioning.</p>
+        </div>
+
+        <div class="substance-card">
+            <span>⚡</span>
+            <h3>Stimulants</h3>
+            <p>Can strongly affect the brain, heart and nervous system.</p>
+        </div>
+
+        <div class="substance-card">
+            <span>🧪</span>
+            <h3>Other Substances</h3>
+            <p>Different substances can have different risks and effects.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="awareness-divider"></div>
+
+
+    </section>
+<!-- TAKE SELF-ASSESSMENT -->
+
+<section class="awareness-next-step">
+
+    <div>
+        <span class="eyebrow">
+            TAKE THE NEXT STEP
+        </span>
+
+        <h2>
+            Want to understand your risk?
+        </h2>
+
+        <p>
+            Take our self-assessment to reflect on your habits,
+            understand warning signs, and learn when support may help.
+        </p>
+
+        <button
+            class="assessment-button"
+            onclick="window.location.href='assessment.html'">
+            Take Self-Assessment →
+        </button>
+    </div>
+
+    <div class="next-step-icon">
+        🌱
+    </div>
+
+</section>
+
+   
+
+</main>
+
+
+<script>
+
+async function loadAwareness() {
+
+    const content =
+        document.getElementById("awarenessContent");
+
+    try {
+
+        const response =
+            await fetch("http://127.0.0.1:8000/awareness");
+
+        const data =
+            await response.json();
+
+        let html = "";
+
+        data.topics.forEach(function(topic, index) {
+
+            const icons = ["🧠", "🍃", "⚠️", "🤝", "💚", "🌿"];
+
+            html += `
+                <article class="modern-awareness-card">
+
+                    <div class="modern-awareness-icon">
+                        ${icons[index % icons.length]}
+                    </div>
+
+                    <div class="modern-awareness-content">
+
+                        <h3>
+                            ${topic.name}
+                        </h3>
+
+                        <p>
+                            ${topic.description}
+                        </p>
+
+                    </div>
+
+                </article>
+            `;
+
+        });
+
+        content.innerHTML = html;
+
+    } catch (error) {
+
+        content.innerHTML = `
+            <div class="loading-card">
+                <p>Unable to connect to backend.</p>
+            </div>
+        `;
+
+        console.error(error);
+    }
+}
+
+loadAwareness();
+
+</script>
+
+</body>
+
+</html>

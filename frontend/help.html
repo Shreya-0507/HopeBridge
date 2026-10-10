@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nasha Mukti - Find Help</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+<style>
+    /* =========================================
+   FIND HELP PAGE
+   ========================================= */
+
+.help-hero {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 38px 42px;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #f1f8e9, #ffffff);
+    border: 1px solid #dcebd7;
+    border-radius: 26px;
+    box-shadow: 0 10px 30px rgba(54, 90, 58, 0.08);
+}
+
+.help-hero-icon {
+    width: 78px;
+    height: 78px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e1f2d9;
+    border-radius: 50%;
+    font-size: 40px;
+    box-shadow: 0 6px 18px rgba(70, 120, 70, 0.10);
+}
+
+.help-hero h1 {
+    margin: 0 0 10px;
+    color: #07543f;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    line-height: 1.2;
+}
+
+.help-hero p {
+    margin: 0;
+    max-width: 700px;
+    color: #60776d;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* SEARCH SECTION */
+
+.help-information {
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 24px;
+    border: 1px solid #e1ebe0;
+    box-shadow: 0 8px 25px rgba(50, 80, 55, 0.07);
+}
+
+.help-search-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.help-search-card {
+    padding: 24px;
+    background: #f8fbf6;
+    border: 1px solid #e3ece0;
+    border-radius: 19px;
+    transition: all 0.25s ease;
+}
+
+.help-search-card:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(48, 90, 55, 0.08);
+}
+
+.help-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    background: #e3f3dd;
+    border-radius: 14px;
+    font-size: 24px;
+}
+
+.help-search-card h3 {
+    margin: 0 0 8px;
+    color: #176048;
+    font-size: 17px;
+}
+
+.help-search-card p {
+    margin: 0 0 16px;
+    color: #687970;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.help-search-card input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border: 1px solid #dce8d9;
+    border-radius: 12px;
+    color: #40564b;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.help-search-card input:focus {
+    border-color: #8fbd82;
+    box-shadow: 0 0 0 3px rgba(143, 189, 130, 0.15);
+}
+
+.help-primary-button {
+    display: inline-block;
+    padding: 12px 19px;
+    background: #0d7659;
+    color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.help-primary-button:hover {
+    background: #095d47;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(13, 118, 89, 0.20);
+}
+
+.help-privacy {
+    margin-bottom: 17px;
+    padding: 10px 12px;
+    background: #eef7eb;
+    border-radius: 10px;
+    color: #718078;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* STATUS */
+
+.help-status-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+    padding: 14px 17px;
+    background: #f5faf2;
+    border: 1px solid #e1ecdd;
+    border-radius: 14px;
+}
+
+.help-status-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3f3dd;
+    border-radius: 10px;
+}
+
+.help-status-box p {
+    margin: 0;
+    color: #65766d;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* RESULTS */
+
+.help-results {
+    margin-top: 25px;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e1ebe0;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(50, 80, 55, 0.07);
+}
+
+.centre-card {
+    position: relative;
+    padding: 24px;
+    margin: 15px 0;
+    background: linear-gradient(135deg, #f8fbf6, #ffffff);
+    border: 1px solid #e0ebe0;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+    box-shadow: 0 5px 16px rgba(50, 80, 55, 0.05);
+}
+
+.centre-card:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(48, 90, 55, 0.10);
+}
+
+.centre-card h3 {
+    margin: 0 0 14px;
+    color: #176048;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.centre-card p {
+    margin: 9px 0;
+    color: #687970;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.centre-card button {
+    margin-top: 14px;
+    padding: 11px 18px;
+    background: #0d7659;
+    color: #ffffff;
+    border: none;
+    border-radius: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.centre-card button:hover {
+    background: #095d47;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(13, 118, 89, 0.20);
+}
+
+.centre-card:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(48, 90, 55, 0.08);
+}
+
+.centre-card h3 {
+    margin: 0 0 12px;
+    color: #176048;
+    font-size: 17px;
+}
+
+.centre-card p {
+    margin: 8px 0;
+    color: #687970;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.centre-card button {
+    margin-top: 10px;
+    padding: 10px 17px;
+    background: #0d7659;
+    color: #ffffff;
+    border: none;
+    border-radius: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.centre-card button:hover {
+    background: #095d47;
+    transform: translateY(-2px);
+}
+
+.loading {
+    text-align: center;
+    padding: 25px;
+    color: #687970;
+}
+
+.help-empty-state {
+    padding: 35px 20px;
+    text-align: center;
+    background: #f8fbf6;
+    border: 1px dashed #d5e4d1;
+    border-radius: 18px;
+}
+
+.help-empty-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    background: #e4f2de;
+    border-radius: 16px;
+    font-size: 27px;
+}
+
+.help-empty-state h3 {
+    margin: 0 0 8px;
+    color: #176048;
+    font-size: 18px;
+}
+
+.help-empty-state p {
+    margin: 0 auto;
+    max-width: 520px;
+    color: #687970;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* NEXT STEP */
+
+.help-next-step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 25px;
+    padding: 28px 32px;
+    background: linear-gradient(135deg, #e2f4d9, #f5faef);
+    border: 1px solid #d6e8ce;
+    border-radius: 22px;
+}
+
+.help-next-step h2 {
+    margin: 0 0 8px;
+    color: #07543f;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+}
+
+.help-next-step p {
+    margin: 0;
+    max-width: 720px;
+    color: #65766d;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* DASHBOARD BUTTON */
+
+.help-dashboard-button {
+    display: block;
+    margin: 25px auto 10px;
+    padding: 12px 24px;
+    background: #0d7659;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.help-dashboard-button:hover {
+    background: #095d47;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(13, 118, 89, 0.20);
+}
+.empty-result {
+    padding: 35px 20px;
+    text-align: center;
+    background: #f8fbf6;
+    border: 1px dashed #d5e4d1;
+    border-radius: 18px;
+}
+
+.empty-result h3 {
+    margin: 0 0 8px;
+    color: #176048;
+    font-size: 18px;
+}
+
+.empty-result p {
+    margin: 0 auto;
+    max-width: 520px;
+    color: #687970;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    .help-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
+    }
+
+    .help-hero h1 {
+        font-size: 28px;
+    }
+
+    .help-information,
+    .help-results {
+        padding: 22px 18px;
+    }
+
+    .help-search-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .help-next-step {
+        padding: 24px;
+    }
+
+    .help-next-step h2 {
+        font-size: 21px;
+    }
+
+}</style>
+
+</head>
+
+
+<body>
+
+<header class="feature-header">
+
+    <button onclick="goBackToDashboard()">
+        ← Back to Dashboard
+    </button>
+
+</header>
+
+
+<main class="feature-page">
+
+    <!-- HERO -->
+
+    <section class="help-hero">
+
+        <div class="help-hero-icon">
+            🏥
+        </div>
+
+        <div>
+
+            <span class="eyebrow">
+                FIND SUPPORT
+            </span>
+
+            <h1>
+                Find Help Near You
+            </h1>
+
+            <p>
+                Find rehabilitation and de-addiction support
+                services near a location you choose or near
+                your current location.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION SEARCH -->
+
+    <section class="help-information">
+
+        <div class="feature-section-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    SEARCH FOR SUPPORT
+                </span>
+
+                <h2>
+                    Find Rehabilitation Centres
+                </h2>
+
+                <p>
+                    Search by city, area, landmark or use
+                    your current location.
+                </p>
+
+            </div>
+
+           
+
+        </div>
+
+
+        <div class="help-search-grid">
+
+            <!-- SEARCH LOCATION -->
+
+            <div class="help-search-card">
+
+                <div class="help-card-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Search Any Location
+                </h3>
+
+                <p>
+                    Enter a city, area, landmark or place
+                    to find nearby rehabilitation centres.
+                </p>
+                  <input
+                    type="text"
+                    id="locationSearch"
+                    placeholder="Example: Kothrud Pune, Mumbai, Delhi..."
+                    onkeydown="if(event.key === 'Enter') searchLocation()"
+                  >
+
+                <button
+                    class="help-primary-button"
+                    onclick="searchLocation()">
+
+                    🔎 Search Location
+
+                </button>
+
+            </div>
+
+
+            <!-- CURRENT LOCATION -->
+
+            <div class="help-search-card">
+
+
+                <h3>
+                    Find Centres Near Me
+                </h3>
+
+                <p>
+                    Allow location access to find rehabilitation
+                    centres near your current position.
+                </p>
+
+                <div class="help-privacy">
+                    🔒 Your location is requested only when you
+                    click the button and is not saved.
+                </div>
+
+                <button
+                    id="locationButton"
+                    class="help-primary-button"
+                    onclick="useMyLocation()">
+
+                    📍 Find Centres Near Me
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="help-status-box">
+
+            <span class="help-status-icon">
+                💚
+            </span>
+
+            <p id="locationStatus">
+                Search for a location or use your current
+                location to find rehabilitation centres.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+
+    <section class="help-results">
+
+        <div class="feature-section-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    AVAILABLE SUPPORT
+                </span>
+
+                <h2>
+                    Nearby Rehabilitation Centres
+                </h2>
+
+                <p>
+                    Rehabilitation and de-addiction support
+                    services available near the selected location.
+                </p>
+
+            </div>
+
+            <div class="help-section-icon">
+                🏥
+            </div>
+
+        </div>
+
+
+        <div id="centreResults">
+
+            <div class="help-empty-state">
+
+                <div class="help-empty-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Ready to Find Support?
+                </h3>
+
+                <p>
+                    Search for a location or click
+                    "Find Centres Near Me" to discover
+                    rehabilitation centres.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEXT STEP -->
+
+    <section class="help-next-step">
+
+        <div>
+
+            <span class="eyebrow">
+                YOU DON'T HAVE TO DO THIS ALONE
+            </span>
+
+            <h2>
+                Reaching out is a step toward recovery.
+            </h2>
+
+            <p>
+                Professional support can make the recovery
+                journey safer, clearer and more manageable.
+            </p>
+
+        </div>
+
+        <div class="next-step-icon">
+            💚
+        </div>
+
+    </section>
+
+
+    <button
+        class="help-dashboard-button"
+        onclick="goBackToDashboard()">
+
+        🏠 Back to Dashboard
+
+    </button>
+
+</main>
+
+
+<script>
+
+function goBackToDashboard() {
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+/*
+    SEARCH LOCATION
+*/
+
+async function searchLocation() {
+
+    const location =
+        document.getElementById("locationSearch").value.trim();
+
+    const status =
+        document.getElementById("locationStatus");
+
+    const results =
+        document.getElementById("centreResults");
+
+
+    if (!location) {
+
+        alert("Please enter a location.");
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "🔎 Searching for location...";
+
+    results.innerHTML = `
+        <div class="centre-card">
+            <div class="loading">
+                🔎 Finding the location...
+            </div>
+        </div>
+    `;
+
+
+    try {
+
+        const response = await fetch(
+            `http://127.0.0.1:8000/search-location?q=${encodeURIComponent(location)}`
+        );
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.detail ||
+                "Location could not be found."
+            );
+
+        }
+
+
+        status.innerHTML =
+            `📍 Location selected: <strong>${escapeHtml(data.display_name)}</strong>`;
+
+
+        findCentres(
+            data.latitude,
+            data.longitude
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        status.textContent =
+            "❌ Location could not be found.";
+
+        results.innerHTML = `
+            <div class="centre-card">
+
+                <h3>❌ Location Not Found</h3>
+
+                <p>
+                    Please enter a valid city, area,
+                    landmark or place and try again.
+                </p>
+
+            </div>
+        `;
+
+    }
+
+}
+
+
+/*
+    FIND CENTRES NEAR CURRENT LOCATION
+*/
+   function useMyLocation() {
+
+    const status = document.getElementById("locationStatus");
+    const button = document.getElementById("locationButton");
+
+    if (button) {
+        button.disabled = true;
+        button.textContent = "📍 Detecting Location...";
+    }
+
+
+    if (!navigator.geolocation) {
+        status.textContent =
+            "❌ Your browser does not support location services.";
+        return;
+    }
+
+    status.textContent =
+        "📍 Detecting your current location...";
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            status.textContent =
+    "📍 Current location detected. Finding nearby rehabilitation centres...";
+
+           if (button) {
+                 button.disabled = false;
+                 button.textContent = "📍 Find Centres Near Me";
+                  }
+
+           findCentres(latitude, longitude);
+                 },
+
+        function(error) {
+            if (button) {
+             button.disabled = false;
+             button.textContent = "📍 Find Centres Near Me";
+              }
+
+            if (error.code === error.PERMISSION_DENIED) {
+
+                status.textContent =
+                    "❌ Location permission was denied. Please allow location access and try again.";
+
+            } else if (error.code === error.POSITION_UNAVAILABLE) {
+
+                status.textContent =
+                    "❌ Your current location could not be determined.";
+
+            } else if (error.code === error.TIMEOUT) {
+
+                status.textContent =
+                    "❌ Location request timed out. Please try again.";
+
+            } else {
+
+                status.textContent =
+                    "❌ Unable to get your current location.";
+            }
+        },
+
+        {
+            enableHighAccuracy: true,
+            timeout: 15000,
+            maximumAge: 0
+        }
+    );
+}
+
+/*
+    FIND REHABILITATION CENTRES
+*/
+
+async function findCentres(latitude, longitude) {
+
+    const status = document.getElementById("locationStatus");
+    const resultsContainer = document.getElementById("centreResults");
+
+    status.textContent =
+        "🔎 Searching for nearby rehabilitation centres...";
+
+    resultsContainer.innerHTML = `
+    <div class="centre-card">
+        <div class="loading">
+            🔎 Searching for rehabilitation centres near you...
+        </div>
+    </div>
+`;
+setTimeout(() => {
+    const helpResults = document.querySelector(".help-results");
+
+    if (helpResults) {
+        window.scrollTo({
+            top: helpResults.offsetTop - 30,
+            behavior: "smooth"
+        });
+    }
+}, 300);
+
+
+    try {
+
+        const response = await fetch(
+            `http://127.0.0.1:8000/rehabilitation-centres?latitude=${latitude}&longitude=${longitude}&radius=25`
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.detail || "Unable to find rehabilitation centres."
+            );
+        }
+
+        if (!data.centres || data.centres.length === 0) {
+
+            status.textContent =
+                "📍 No rehabilitation centres were found within 25 km.";
+
+            resultsContainer.innerHTML = `
+                <div class="empty-result">
+                    <h3>🏥 No Centres Found</h3>
+                    <p>
+                        No rehabilitation or de-addiction centre
+                        was found within 25 km of this location.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+        status.textContent =
+            `📍 Found ${data.centres.length} nearby rehabilitation centre(s).`;
+
+        resultsContainer.innerHTML = "";
+
+        data.centres.forEach(function(centre) {
+
+            const card = document.createElement("div");
+
+            card.className = "centre-card";
+        card.innerHTML = `
+    <div class="centre-info">
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px;">
+            
+            <span style="
+                display:inline-block;
+                padding:4px 10px;
+                background:#e8f5e9;
+                color:#1b4332;
+                border-radius:12px;
+                font-size:11px;
+                font-weight:700;
+            ">
+                ✓ SUPPORT CENTRE
+            </span>
+
+        </div>
+
+        <h3>
+            🏥 ${escapeHtml(centre.name)}
+        </h3>
+            
+
+        <p>
+            📍 <strong>Address:</strong>
+            ${escapeHtml(centre.address)}
+        </p>
+
+        <p>
+    📞 <strong>Phone:</strong>
+    ${
+        centre.phone
+        ? `<a href="tel:${escapeHtml(centre.phone.split('/')[0].trim())}"
+             style="color:#0d7659; font-weight:600; text-decoration:none;">
+             ${escapeHtml(centre.phone)}
+           </a>`
+        : "Not listed"
+    }
+       </p>
+
+    </div>
+
+    <button onclick='openDirections(${JSON.stringify(centre.name)}, ${JSON.stringify(centre.address)})'>
+        🗺️ Get Directions
+    </button>
+`;
+
+            resultsContainer.appendChild(card);
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Rehabilitation centre search failed:",
+            error
+        );
+
+        status.textContent =
+            "❌ Unable to find nearby rehabilitation centres.";
+
+        resultsContainer.innerHTML = `
+            <div class="empty-result">
+                <h3>⚠️ Search Error</h3>
+                <p>
+                    The rehabilitation centre service
+                    could not be reached. Please try again.
+                </p>
+            </div>
+        `;
+    }
+}function escapeHtml(value) {
+
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+
+/*
+    OPEN DIRECTIONS
+
+    Google Maps is used ONLY when the user
+    wants directions to a selected centre.
+*/
+function openDirections(name, address) {
+    const destination = encodeURIComponent(
+        `${name}, ${address}`
+    );
+
+    const mapsUrl =
+        `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+
+    window.open(mapsUrl, "_blank");
+}
+
+
+</script>
+</body>
+</html>
