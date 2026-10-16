@@ -36,13 +36,17 @@ def create_access_token(data: dict):
 
     return token
 
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://hopebridge-rqf6.onrender.com"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
 
 
 def distance_in_km(latitude_a, longitude_a, latitude_b, longitude_b):
