@@ -17,7 +17,7 @@ form.addEventListener("submit", async function(event) {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/register",
+            "http://https://hopebridge-backend-5xfs.onrender.com/register",
             {
                 method: "POST",
 
