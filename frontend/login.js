@@ -15,7 +15,7 @@ form.addEventListener("submit", async function(event) {
     try {
 
         const response = await fetch(
-            "http://https://hopebridge-backend-5xfs.onrender.com/login",
+            "http://hopebridge-backend-5xfs.onrender.com/login",
             {
                 method: "POST",
 
