@@ -738,14 +738,15 @@ async function searchLocation() {
 
 
     try {
-
-              
 const response = await fetch(
-    `https://hopebridge-backend-5xfs.onrender.com/rehabilitation-centres?latitude=${latitude}&longitude=${longitude}&radius=25`
+    `https://hopebridge-backend-5xfs.onrender.com/search-location?q=${encodeURIComponent(location)}`
 );
 
+const data = await response.json();
 
-        const data = await response.json();
+
+              
+
 
 
         if (!response.ok) {
