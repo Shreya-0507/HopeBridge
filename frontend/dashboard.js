@@ -26,7 +26,7 @@ async function markProgress() {
     try {
 
         const response = await fetch(
-            "http://https://hopebridge-backend-5xfs.onrender.com/progress",
+            "https://hopebridge-backend-5xfs.onrender.com/progress",
             {
                 method: "POST",
 
@@ -92,7 +92,7 @@ async function submitAssessment(event) {
     try {
 
         const response = await fetch(
-            "http://https://hopebridge-backend-5xfs.onrender.com/self-assessment",
+            "https://hopebridge-backend-5xfs.onrender.com/self-assessment",
             {
                 method: "POST",
 
