@@ -705,95 +705,43 @@ function goBackToDashboard() {
 */
 
 async function searchLocation() {
+  const location = document.getElementById("locationSearch").value.trim();
+  const status = document.getElementById("locationStatus");
+  const results = document.getElementById("centreResults");
 
-    const location =
-        document.getElementById("locationSearch").value.trim();
+  if (!location) {
+    alert("Please enter a location.");
+    return;
+  }
 
-    const status =
-        document.getElementById("locationStatus");
+  status.textContent = "🔎 Searching for location...";
+  results.innerHTML = "";
 
-    const results =
-        document.getElementById("centreResults");
+  try {
+    const response = await fetch(
+      `https://hopebridge-backend-5xfs.onrender.com/search-location?q=${encodeURIComponent(location)}`
+    );
 
+    const data = await response.json();
 
-    if (!location) {
-
-        alert("Please enter a location.");
-
-        return;
-
+    if (!response.ok || data.latitude == null || data.longitude == null) {
+      throw new Error(data.detail || data.message || "Location search failed.");
     }
 
+    status.innerHTML =
+      `📍 Location selected: <strong>${escapeHtml(data.display_name)}</strong>`;
 
-    status.textContent =
-        "🔎 Searching for location...";
-
+    await findCentres(Number(data.latitude), Number(data.longitude));
+  } catch (error) {
+    console.error("City search error:", error);
+    status.textContent = "❌ Location search failed.";
     results.innerHTML = `
-        <div class="centre-card">
-            <div class="loading">
-                🔎 Finding the location...
-            </div>
-        </div>
-    `;
-
-
-    try {
-const response = await fetch(
-    `https://hopebridge-backend-5xfs.onrender.com/search-location?q=${encodeURIComponent(location)}`
-);
-
-const data = await response.json();
-
-
-              
-
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.detail ||
-                "Location could not be found."
-            );
-
-        }
-
-
-        status.innerHTML =
-            `📍 Location selected: <strong>${escapeHtml(data.display_name)}</strong>`;
-
-
-        findCentres(
-            data.latitude,
-            data.longitude
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        status.textContent =
-            "❌ Location could not be found.";
-
-        results.innerHTML = `
-            <div class="centre-card">
-
-                <h3>❌ Location Not Found</h3>
-
-                <p>
-                    Please enter a valid city, area,
-                    landmark or place and try again.
-                </p>
-
-            </div>
-        `;
-
-    }
-
+      <div class="centre-card">
+        <h3>❌ Could Not Find Location</h3>
+        <p>Please try again. If the problem continues, check the browser console for the error.</p>
+      </div>`;
+  }
 }
-
 
 /*
     FIND CENTRES NEAR CURRENT LOCATION
