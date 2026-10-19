@@ -10,6 +10,7 @@ from urllib.parse import urlencode,quote
 from urllib.request import Request, urlopen
 import json
 import requests
+import re
 app = FastAPI()
 SECRET_KEY = "nasha-mukti-secret-key"
 
@@ -207,6 +208,42 @@ def rehabilitation_centres(
         "centres": centres[:20],
         "radius": radius
     }
+
+@app.get("/search-centres")
+def search_centres(q: str = Query(..., min_length=2, max_length=100)):
+    """Search saved centres by state, district, city, or address."""
+    search_term = re.escape(q.strip())
+
+    query = {
+        "$or": [
+            {"state": {"$regex": search_term, "$options": "i"}},
+            {"district": {"$regex": search_term, "$options": "i"}},
+            {"city": {"$regex": search_term, "$options": "i"}},
+            {"address": {"$regex": search_term, "$options": "i"}}
+        ]
+    }
+
+    records = list(
+        rehab_centres_collection.find(query, {"_id": 0}).limit(100)
+    )
+
+    centres = []
+
+    for record in records:
+        centres.append({
+            "name": record.get("name", "Rehabilitation Centre"),
+            "address": record.get("address", "Address not listed"),
+            "phone": record.get("phone", "Phone not listed"),
+            "website": record.get("website"),
+            "latitude": record.get("latitude"),
+            "longitude": record.get("longitude"),
+            "state": record.get("state"),
+            "district": record.get("district"),
+            "source": record.get("source", "Nasha Mukti Database")
+        })
+
+    return {"centres": centres, "count": len(centres)}
+
 
 @app.get("/database-test")
 def database_test():
